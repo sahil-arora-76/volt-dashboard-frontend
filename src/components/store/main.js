@@ -10,7 +10,7 @@ export const store = createStore({
         },
         login(state, val) { 
             state.loginInfo = val.value;
-        }
+        }, 
     }, 
     actions: {
         press(context) { 
@@ -18,6 +18,6 @@ export const store = createStore({
         },
         login(context) { 
             context.commit('login');
-        }
+        }, 
     }
 })

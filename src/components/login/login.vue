@@ -1,7 +1,7 @@
 <template>
 <base-nav> </base-nav>
     <div class="main">
-        <ul>
+        <ul  v-if="guilds.length > 0 ">
             <li v-for="guild in guilds " :key="guild.id" @click="redirect(guild.id)">
                 <div class="content" >
                     <div class="card">
@@ -12,6 +12,10 @@
                 </div>
             </li>
         </ul>
+            <div v-if="guilds.length <= 0" class="noguilds" > 
+            <p> You Should Have MANAGE_SERVERS Perms  With Volt In It </p>
+            <span> Found Guild: 0 </span>
+        </div>
     </div>
 
 </template>
@@ -64,7 +68,14 @@ ul {
     align-items: left;
     display: flex;
 }
-    
+.noguilds { 
+    display: block; 
+    color: white;
+    position: relative;
+    text-align: center; 
+    top: 20vh;
+    font-size: 2.5rem;
+}
 @media screen and (max-width: 1400px) {
   .ul {
         width: 100%;

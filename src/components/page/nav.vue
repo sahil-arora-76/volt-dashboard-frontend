@@ -20,6 +20,7 @@
                     <span>  Tutorial </span>
                     <span>  Sponser </span>
                    <span @click="loginRedirect"> {{ username }} </span>
+                   <slot> </slot>
                 </div>
             </div>
         </div>
@@ -38,7 +39,7 @@ export default {
             } else { 
                 return 'Login'
             }
-        }
+        },
     }, 
     methods: { 
         press() { 
@@ -64,10 +65,11 @@ export default {
                 return window.location = 'http://localhost:8080/login';
             }
         }
-    }
+    },  
+
 }
 </script>
-<style scoped>
+<style scoped >
 #volt, #volt-mob  { 
     font-size: 2rem;
     font-weight: 500;
