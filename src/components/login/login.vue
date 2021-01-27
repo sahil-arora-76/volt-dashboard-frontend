@@ -2,7 +2,7 @@
 <base-nav> </base-nav>
     <div class="main">
         <ul>
-            <li v-for="guild in guilds " :key="guild.id">
+            <li v-for="guild in guilds " :key="guild.id" @click="redirect(guild.id)">
                 <div class="content" >
                     <div class="card">
                     <div class="icon"><img class='imgs' :src="guild.icon ? 'https://cdn.discordapp.com/icons/' + guild.id + '/' + guild.icon + '.webp': ' '">
@@ -24,6 +24,11 @@ export default {
     computed: { 
         f() { 
             return this.$store.state.pressed
+        }
+    },
+    methods: { 
+        redirect(id) { 
+            return window.location = '/send/' + id;  
         }
     },
     data() {

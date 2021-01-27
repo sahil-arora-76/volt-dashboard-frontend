@@ -8,7 +8,7 @@
             <span>  Tutorial </span>
             <span>  Sponser </span>
             <span>  Support </span>
-            <span @click="loginRedirect"> Login </span>
+            <span @click="loginRedirect"> {{ username }} </span>
         </div>
          <div class="mobile"> 
             <div>
@@ -19,7 +19,7 @@
                     <span>  Commands </span>
                     <span>  Tutorial </span>
                     <span>  Sponser </span>
-                    <span> Login</span>
+                   <span @click="loginRedirect"> {{ username }} </span>
                 </div>
             </div>
         </div>
@@ -31,6 +31,13 @@ export default {
     computed: { 
         pressed() { 
             return this.$store.state.pressed;
+        }, 
+        username() { 
+            if (this.$store.state.loginInfo.data) { 
+                return this.$store.state.loginInfo.data.getUser.username;
+            } else { 
+                return 'Login'
+            }
         }
     }, 
     methods: { 

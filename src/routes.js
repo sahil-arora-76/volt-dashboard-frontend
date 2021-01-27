@@ -2,16 +2,19 @@ import {createRouter, createWebHistory } from 'vue-router';
 import main from './components/page/main.vue'
 import login from './components/login/login.vue';
 import { store } from './components/store/main';
-// import { nextTick } from 'vue';
+import send  from './components/embeds/send.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/login', component: login },
         { path: '/', component: main }, 
+        { path: '/send/:Id', component: send, props: true }
     ], 
     linkActiveClass: 'active'
 }); 
-
+export let isAuth  = () => {
+    
+}
 router.beforeEach(async (to) => {
     if (to.fullPath === '/login') { 
         let cookie = document.cookie.split(';'); 
@@ -23,11 +26,10 @@ router.beforeEach(async (to) => {
             }
             let userid = cookie[index]; 
             let id = userid.split('=')[1];
-            console.log(id);
             const graphqlQuery = { 
                 query: `
                     { 
-                        getUser(id:"${id}") {_id, id , discriminator, avatar guilds { id name owner permissions permissions_new icon } } 
+                        getUser(id:"${id}") {_id id  discriminator avatar username guilds { id name owner permissions permissions_new icon  } } 
                     }
                 `
             }
@@ -40,7 +42,6 @@ router.beforeEach(async (to) => {
             })
             let response = await res.json(); 
             if (response.errors) {
-                console.log(response)
                 return window.location = '/'
             } else { 
                 store.state.loginInfo = response;
