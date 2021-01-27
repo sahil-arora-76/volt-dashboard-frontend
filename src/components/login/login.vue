@@ -2,66 +2,12 @@
 <base-nav> </base-nav>
     <div class="main">
         <ul>
-            <li>
-                <div class="content">
+            <li v-for="guild in guilds " :key="guild.id">
+                <div class="content" >
                     <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/710534645405581353/0b746b3c3d136f2fc21e7434a7f0aca1.webp?size=1024">
+                    <div class="icon"><img class='imgs' :src="guild.icon ? 'https://cdn.discordapp.com/icons/' + guild.id + '/' + guild.icon + '.webp': ' '">
                     </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/235148962103951360/cececd50fdc87b29929e65c768f24ad6.webp?size=2048">
-                    </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/235148962103951360/cececd50fdc87b29929e65c768f24ad6.webp?size=2048">
-                    </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/710534645405581353/0b746b3c3d136f2fc21e7434a7f0aca1.webp?size=1024">
-                    </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/479688142908162059/bca869ec376f672cc3bcc7368badccb5.webp?size=2048">
-                    </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.webp?size=2048">
-                    </div>
-                    <p class="title">Profile</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="content">
-                    <div class="card">
-                    <div class="icon"><img class='imgs' src="https://cdn.discordapp.com/avatars/204255221017214977/2fa57b425415134d4f8b279174131ad6.webp?size=2048">
-                    </div>
-                    <p class="title">Profile</p>
+                    <p class="title">{{ guild.name }} </p>
                     </div>
                 </div>
             </li>
@@ -74,10 +20,31 @@ import baseNav from '../page/nav';
 export default {
     components: {
         baseNav
-    }
+    }, 
+    computed: { 
+        f() { 
+            return this.$store.state.pressed
+        }
+    },
+    data() {
+        return  {    
+            guilds: this.$store.state.loginInfo.data.getUser.guilds
+        }
+   }, 
+   watch: { 
+       f(val ) { 
+           if (val) { 
+               return document.querySelector('.main').style.top = 50 + 'vh';
+           }
+           return document.querySelector('.main').style.top = 0 + 'vh';
+       }
+   }
 }
 </script>
 <style scoped>
+.main { 
+    position: relative
+}
 ul {
     display: flex;
     flex-direction: row;

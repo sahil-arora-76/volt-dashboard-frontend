@@ -44,7 +44,18 @@ export default {
             return 'fas fa-bars'
         }, 
         loginRedirect() { 
-            window.location = 'http://localhost:3000/auth2';
+
+            if (!document.cookie) { 
+                return window.location = 'http://localhost:3000/auth2';
+            }
+            let cookie = document.cookie.split(';');
+            let index = cookie.findIndex(x => x.includes('token')); 
+            let index2 = cookie.findIndex(x => x.includes('userid')); 
+            if (index < 0 || index2 < 0) { 
+                return window.location = 'http://localhost:3000/auth2';
+            } else { 
+                return window.location = 'http://localhost:8080/login';
+            }
         }
     }
 }
