@@ -11,24 +11,32 @@
             </div>
             <div class="forms"> 
                 <form class="embed" v-if="mode === 'embed' "> 
-                    <input type="text" name="guildId" :value="Id" > 
-
-                    <textarea > 
+                    <input type="text" name="guildId" :value="Id" readonly/> 
+                    <textarea placeholder="CONTENT"> 
                     </textarea>
-                    <input type="text" name="channelId" >   
-                    <input type="text" name="color" >   
+                    <input type="text" name="channelId" v-model="channel" placeholder="CHANNEL ID ">   
+                    <p v-if="channel.length > 2 && channel.length < 9" > Invalid Channel Id </p>
+                    <input type="text" name="color" v-model="color" placeholder="COLOR">
+                    <p v-if="color.length > 1 && !color.includes('#') "> Invalid Color Should Be A Hex Code </p>
+
                     <button type="sumbit"> Sumbit </button> 
                 </form>
                 <form class="imageembeds" v-if="mode === 'imageembed' ">
-                    <input type="text" name="guildId" :value="Id" >
-                    <textarea > 
+                    <input type="text" name="guildId" :value="Id" readonly>
+                    <textarea placeholder="CONTENT"> 
                     </textarea> 
-                    <input type="text" name="channelId" >  
-                    <input type="text" name="color" >
-                    <input type="text" name="author" >
-                    <input type="text" name="footer" > 
-                    <input type="text" name="footerImage" > 
-                    <input type="text" name="thumbnail" > 
+                    <input type="text" name="channelId" v-model="channel" placeholder="CHANNEL">  
+                    <p v-if="channel.length > 2 && channel.length < 9" > Invalid Channel Id </p>
+                    <input type="text" name="color" v-model="color" placeholder="COLOR">
+                     <p v-if="color.length > 1 && !color.includes('#') "> Invalid Color Should Be A Hex Code </p>
+                    <input type="text" name="author" v-model="author" placeholder="AUTHOR" >
+                    <p v-if="author.length > 2 &&  author.length > 10 ">Invalid Text. Minimum Length Should Be 10 Chars  </p>
+                    <input type="text" name="footer" v-model="footer" placeholder="FOOTER"> 
+                    <p v-if="footer.length > 2 &&  footer.length > 10 ">Invalid Text. Minimum Length Should Be 10 Chars  </p>
+                    <input type="text" name="footerImage" v-model="footerimage" placeholder="FOOTERIMAGE"> 
+                    <p v-if="footerimage.length > 2 &&  !footerimage.includes('http') ">Invalid Image Link. </p>
+                    <input type="text" name="thumbnail" v-model="thumb" placeholder="THUMBNAIL"> 
+                    <p v-if="thumb.length > 2 &&  !thumb.includes('http')"> Invalid Image Link. </p>
                     <button type="sumbit"> Sumbit </button> 
                 </form> 
             </div>
@@ -58,6 +66,14 @@ export default {
         return  { 
             val: this.Id, 
             mode: 'embed', 
+            show: false, 
+            channel: '', 
+            color: '', 
+            author: '', 
+            footer: '', 
+            thumb: '', 
+            image: '', 
+            footerimage: ''
         }
     }, 
     methods: { 
@@ -66,7 +82,7 @@ export default {
             if (this.$store.state.pressed) {
                 this.$store.dispatch('press');
             }
-        }
+        }, 
     }
 }
 </script>
@@ -88,6 +104,9 @@ export default {
         top: 20vh;
         width: 20%;
         left: 10%;
+    }
+    p { 
+        color: red;
     }
     #img { 
         padding-right: 5px;
