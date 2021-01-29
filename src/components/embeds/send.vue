@@ -17,42 +17,40 @@
                     <input type="text" name="channelId" v-model="channel" placeholder="CHANNEL ID ">   
                     <p v-if="channel.length > 2 && channel.length < 9" > Invalid Channel Id </p>
                     <input type="text" name="color" v-model="color" placeholder="COLOR">
+                    <input type="text" name="title" v-model="title" placeholder="TITLE">  
                     <p v-if="color.length > 1 && !color.includes('#') "> Invalid Color Should Be A Hex Code </p>
                     <button type="sumbit" @click.prevent="sendEmbed" > Sumbit </button> 
                 </form>
                 <form class="imageembeds" v-if="mode === 'imageembed' ">
                     <input type="text" name="guildId" :value="Id" readonly>
-                    <textarea placeholder="CONTENT"> 
+                    <textarea placeholder="CONTENT" id="image-embed-content"> 
                     </textarea> 
                     <input type="text" name="channelId" v-model="channel" placeholder="CHANNEL">  
                     <p v-if="channel.length > 2 && channel.length < 9" > Invalid Channel Id </p>
+                    <input type="text" name="title" v-model="title" placeholder="TITLE">  
                     <input type="text" name="color" v-model="color" placeholder="COLOR">
                      <p v-if="color.length > 1 && !color.includes('#') "> Invalid Color Should Be A Hex Code </p>
                     <input type="text" name="author" v-model="author" placeholder="AUTHOR" >
                     <p v-if="author.length > 2 &&  author.length > 10 ">Invalid Text. Minimum Length Should Be 10 Chars  </p>
                     <input type="text" name="footer" v-model="footer" placeholder="FOOTER"> 
                     <p v-if="footer.length > 2 &&  footer.length > 10 ">Invalid Text. Minimum Length Should Be 10 Chars  </p>
+                    <input type="text" name="image" v-model="image" placeholder="IMAGE"> 
+                    <p v-if="image.length > 2 &&  !image.includes('http')"> Invalid Image Link. </p>
                     <input type="text" name="footerImage" v-model="footerimage" placeholder="FOOTERIMAGE"> 
                     <p v-if="footerimage.length > 2 &&  !footerimage.includes('http') ">Invalid Image Link. </p>
                     <input type="text" name="thumbnail" v-model="thumb" placeholder="THUMBNAIL"> 
                     <p v-if="thumb.length > 2 &&  !thumb.includes('http')"> Invalid Image Link. </p>
-                    <button type="sumbit" > Sumbit </button> 
+                    <input type="text" name="authorlink" v-model="authorImage" placeholder="AUTHOR IMAGE"> 
+                    <p v-if="authorImage.length > 2 &&  !authorImage.includes('http')"> Invalid Image Link. </p>
+                    <button type="sumbit" @click.prevent="sendImageEmbed" > Sumbit </button> 
                 </form> 
             </div>
         </div>
-            <div id="myModal" class="modal" v-if="show">
-            <div class="modal-content">
-            <div class="modal-header">
-                <i class="fas fa-times" @click="close"></i>
-            </div>
-            <div class="modal-body">
-                <p id="loading"> {{ loading }} </p>
-            </div>
-            </div>
-        </div>
+        <base-popup> {{ loading }} </base-popup>
 </template>
 <script>
 import baseNav  from '../page/nav';
+import basePopup  from '../popup/popup'; 
 export default {
     computed:  {
         f() { 
@@ -68,14 +66,15 @@ export default {
         }
     }, 
     components: {
-        baseNav
+        baseNav, 
+        basePopup
     },
     props: ['Id'], 
     data() { 
         return  { 
             val: this.Id, 
             mode: 'embed', 
-            show: false, 
+            sending: false,
             channel: '', 
             color: '', 
             author: '', 
@@ -83,7 +82,9 @@ export default {
             thumb: '', 
             image: '', 
             footerimage: '', 
-            loading: 'Sending...'
+            loading: 'Sending...', 
+            authorImage: '', 
+            title: ''
         }
     }, 
     methods: { 
@@ -93,13 +94,10 @@ export default {
                 this.$store.dispatch('press');
             }
         }, 
-        close() {
-            this.show = false;
-                this.loading = 'Sending...';
-        },
         async sendEmbed() { 
             let userId = document.cookie; 
-            this.show = true;
+            this.$store.state.popup = true;
+            this.sending = true;
             if (!userId) {
                 return console.log('No Cookies Found!')
             }
@@ -127,14 +125,77 @@ export default {
             body: JSON.stringify(body)
             })
             let response = await res.json(); 
+            this.sending  = false;
             if (response.data.sendEmbed[0] === 'Ok') { 
                 this.loading = 'Done!'; 
                 setTimeout(() => {
-                    this.show = false;
+                    this.$store.state.popup = false;
                     this.loading = 'Sending...';
                 }, 2000)
             } else { 
-                this.loading = response.data.sendEmbed[0]
+                this.loading = response.data.sendEmbed[0];
+                setTimeout(() => {
+                    this.$store.state.popup = false;
+                    this.loading = 'Sending...';
+                }, 2000)
+            }
+        },
+        async sendImageEmbed() { 
+    
+            let userId = document.cookie; 
+            this.$store.state.popup = true;
+            this.sending = true;
+            if (!userId) {
+                return console.log('No Cookies Found!')
+            }
+            let cookies = document.cookie.split(';');
+            let user = cookies.findIndex(x => x.includes('userid')); 
+            if(user.length < 0 ) { 
+                return console.log('Length Smaller Than 0')
+            } 
+            let loginUserId = cookies[user].split('=')[1];
+            const content = document.querySelector('#image-embed-content').value;  
+            let body = { 
+                query: `
+                {
+                    imageEmbed(imageData: { 
+                        guildId: "${this.Id}", 
+                        channelId: "${this.channel}", 
+                        description: "${content}", 
+                        userId: "${loginUserId}", 
+                        image: "${this.image}", 
+                        thumbnail: "${this.thumb}", 
+                        footerImage: "${this.footerimage}", 
+                        footer: "${this.footer}" , 
+                        color: "${this.color}", 
+                        author: "${this.author}", 
+                        authorImage: "${this.authorImage}", 
+                        title: "${this.title}"
+                    }) 
+                }
+                `
+            }
+            let res = await fetch('http://localhost:3000/graphql', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify(body)
+            }); 
+            let response = await res.json(); 
+            console.log(response.data.imageEmbed[0])
+            if (response.data.imageEmbed[0] === 'Ok') { 
+                this.loading = 'Done!'; 
+                setTimeout(() => {
+                    this.$store.state.popup = false;
+                    this.loading = 'Sending...';
+                }, 2000)
+            } else { 
+                this.loading = response.data.imageEmbed[0];
+                setTimeout(() => {
+                    this.$store.state.popup = false;
+                    this.loading = 'Sending...';
+                }, 1000)
             }
         }
     },
@@ -258,94 +319,5 @@ export default {
         button { 
             width: 60%;
         }
-    }
-    .modal {
-        display: flex;
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        -webkit-animation-name: fadeIn; /* Fade in the background */
-        -webkit-animation-duration: 0.4s;
-        animation-name: fadeIn;
-        animation-duration: 0.4s
-    }
-
-    .modal-content {
-        position: absolute;
-        bottom: 0;
-        background-color: #fefefe;
-        width: 100%;
-        -webkit-animation-name: slideIn;
-        -webkit-animation-duration: 0.4s;
-        animation-name: slideIn;
-        animation-duration: 0.4s
-    }
-    @media screen and (max-width: 880px) { 
-        .fa-times { 
-            float: right;
-            text-align: right;
-            font-size: 1.5rem;
-            justify-content: right;
-            position: relative;
-            left: 98%;
-        }
-        .modal-header { 
-            height: 4vh;
-        }
-    }
-    .fa-times { 
-        float: right;
-        text-align: right;
-        font-size: 1.5rem;
-        justify-content: right;
-        position: relative;
-        left: 98%;
-    }    
-    .fa-times:hover,
-    .fa-times:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    #loading { 
-        color: black;
-    }
-    .modal-header {
-        padding: 2px 16px;
-        background-color: #2c2f33;
-        color: white;
-    }
-
-    .modal-body {padding: 2px 16px;}
-    
-    .modal-footer {
-        padding: 2px 16px;
-        background-color: #5cb85c;
-        color: white;
-    }
-    @-webkit-keyframes slideIn {
-        from {bottom: -300px; opacity: 0} 
-        to {bottom: 0; opacity: 1}
-    }
-
-    @keyframes slideIn {
-        from {bottom: -300px; opacity: 0}
-        to {bottom: 0; opacity: 1}
-    }
-
-    @-webkit-keyframes fadeIn {
-        from {opacity: 0} 
-        to {opacity: 1}
-    }
-    
-    @keyframes fadeIn {
-        from {opacity: 0} 
-        to {opacity: 1}
     }
 </style>

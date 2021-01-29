@@ -3,6 +3,7 @@ export const store = createStore({
     state: {
         pressed: false, 
         loginInfo: {},
+        popup: false,
     }, 
     mutations: {
         press(state) { 
@@ -11,6 +12,9 @@ export const store = createStore({
         login(state, val) { 
             state.loginInfo = val.value;
         }, 
+        showPopup(state, val) { 
+            state.popup = val;
+        }
     }, 
     actions: {
         press(context) { 
@@ -19,5 +23,8 @@ export const store = createStore({
         login(context) { 
             context.commit('login');
         }, 
+        showPopup(context) { 
+            context.commit('showpopup')
+        }
     }
 })
