@@ -3,22 +3,22 @@
     <div class="menu">
         <div class="desktop">  
             <router-link to="/" id="volt"> VOLT </router-link>
-            <span>  Vote </span>
+            <a href="https://top.gg/bot/710534645405581353">  Vote </a>
             <span>  Commands </span>
-            <span>  Tutorial </span>
+            <a href="https://www.youtube.com/watch?v=e6UR-CAYvPE">  Tutorial </a>
             <span>  Sponser </span>
-            <span>  Support </span>
+            <a href="https://discord.gg/EYMDZ6E">  Support </a>
             <span @click="loginRedirect"> {{ username }} </span>
         </div>
          <div class="mobile"> 
             <div>
             <i @click="press" :class="state()"></i>
-            <span id="volt-mob"> VOLT</span>
+            <router-link id="volt-mob" to="/"> VOLT</router-link>
                 <div class="mobile-menu"  v-if="pressed "> 
-                    <span>  Vote </span>
+                    <span @click="click('https://top.gg/bot/710534645405581353') ">  Vote </span>
                     <span>  Commands </span>
                     <span>  Tutorial </span>
-                    <span>  Sponser </span>
+                    <span @click="click('https://www.youtube.com/watch?v=e6UR-CAYvPE')">  Sponser </span>
                    <span @click="loginRedirect"> {{ username }} </span>
                    <slot> </slot>
                 </div>
@@ -45,6 +45,9 @@ export default {
         press() { 
            this.$store.dispatch('press');
         }, 
+        click(data) { 
+            window.location = data;
+        },
         state() { 
             if (this.pressed) {
                 return 'fas fa-times'

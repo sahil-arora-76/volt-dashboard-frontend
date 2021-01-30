@@ -3,11 +3,13 @@
     <base-nav>
     <span id="img" @click="changemode('embed')" v-if="mode === 'imageembed'"> Embed </span>
     <span @click="changemode('imageembed')" v-if="mode === 'embed'"> Image Embed </span>
+    <span id="login" @click="logout"> Logout </span>
     </base-nav>
         <div class="main">
             <div class="nav" > 
                     <span id="img" @click="changemode('embed')" v-if="mode === 'imageembed'"> Embed </span>
                     <span @click="changemode('imageembed')" v-if="mode === 'embed'"> Image Embed </span>
+                    <span  id="login" @click="logout"> Logout </span>
             </div>
             <div class="forms"> 
                 <form class="embed" v-if="mode === 'embed' "> 
@@ -17,8 +19,8 @@
                     <input type="text" name="channelId" v-model="channel" placeholder="CHANNEL ID ">   
                     <p v-if="channel.length > 2 && channel.length < 9" > Invalid Channel Id </p>
                     <input type="text" name="color" v-model="color" placeholder="COLOR">
-                    <input type="text" name="title" v-model="title" placeholder="TITLE">  
                     <p v-if="color.length > 1 && !color.includes('#') "> Invalid Color Should Be A Hex Code </p>
+                    <input type="text" name="title" v-model="title" placeholder="TITLE">  
                     <button type="sumbit" @click.prevent="sendEmbed" > Sumbit </button> 
                 </form>
                 <form class="imageembeds" v-if="mode === 'imageembed' ">
@@ -94,6 +96,9 @@ export default {
                 this.$store.dispatch('press');
             }
         }, 
+        async logout() { 
+            window.location = 'http://localhost:3000/logout';
+        },
         async sendEmbed() { 
             let userId = document.cookie; 
             this.$store.state.popup = true;
@@ -112,7 +117,7 @@ export default {
                 query: 
                 `
                 {
-                    sendEmbed(userData: { guildId: "${this.Id}", channelId: "${this.channel}", color: "${this.color}", description: "${content}", userId: "${loginUserId}"} )
+                    sendEmbed(userData: { guildId: "${this.Id}", channelId: "${this.channel}", color: "${this.color}", description: "${content}", title: "${this.title}", userId: "${loginUserId}"} )
                 }
                 
                 `
