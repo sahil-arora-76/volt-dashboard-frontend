@@ -8,7 +8,7 @@ const router = createRouter({
     routes: [
         { path: '/login', component: login },
         { path: '/', component: main }, 
-        { path: '/send/:Id', component: send, props: true }
+        { path: '/send/:Id', component: send, props: true } 
     ], 
     linkActiveClass: 'active'
 }); 
