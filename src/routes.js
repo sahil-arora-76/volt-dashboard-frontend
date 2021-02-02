@@ -3,12 +3,14 @@ import main from './components/page/main.vue'
 import login from './components/login/login.vue';
 import { store } from './components/store/main';
 import send  from './components/embeds/send.vue';
+import vote from './components/votes/votes.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/login', component: login },
         { path: '/', component: main }, 
-        { path: '/send/:Id', component: send, props: true } 
+        { path: '/send/:Id', component: send, props: true }, 
+        { path: '/votes', component: vote }
     ], 
     linkActiveClass: 'active'
 }); 
