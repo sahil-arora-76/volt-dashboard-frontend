@@ -5,6 +5,7 @@ import { store } from './components/store/main';
 import send  from './components/embeds/send.vue';
 import vote from './components/votes/votes.vue';
 import api from './components/api/apis';
+import docs from './components/docs/doc';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -12,7 +13,8 @@ const router = createRouter({
         { path: '/', component: main }, 
         { path: '/send/:Id', component: send, props: true }, 
         { path: '/votes', component: vote }, 
-        { path: '/api', component: api }
+        { path: '/api', component: api }, 
+        { path: '/docs', component: docs }
     ], 
     linkActiveClass: 'active'
 }); 

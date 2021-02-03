@@ -26,6 +26,19 @@ export default {
             guilds: []
         }
     },
+    computed: { 
+        f() { 
+            return this.$store.state.pressed
+        }
+    },
+    watch: { 
+       f(val ) { 
+           if (val) { 
+               return document.querySelector('.main2').style.top = 50 + 'vh';
+           }
+           return document.querySelector('.main2').style.top = 0 + 'vh';
+       }
+   },
     async mounted() { 
         const body = { 
             query: `

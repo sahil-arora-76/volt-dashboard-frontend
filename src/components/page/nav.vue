@@ -3,8 +3,8 @@
     <div class="menu">
         <div class="desktop">  
             <router-link to="/" id="volt"> VOLT </router-link>
-            <a href="https://top.gg/bot/710534645405581353">  Vote </a>
-            <span>  Docs </span>
+            <a href="/votes">  Vote </a>
+            <a href="/docs">  Docs </a>
             <a href="https://www.youtube.com/watch?v=e6UR-CAYvPE">  Tutorial </a>
             <span>  Sponser </span>
             <a href="/api">  Api </a>
@@ -15,11 +15,11 @@
             <i @click="press" :class="state()"></i>
             <router-link id="volt-mob" to="/"> VOLT</router-link>
                 <div class="mobile-menu"  v-if="pressed "> 
-                    <span @click="click('https://top.gg/bot/710534645405581353') ">  Vote </span>
-                    <span>  Docs </span>
+                    <span @click="click('/votes') ">  Vote </span>
+                    <a href="/docs">  Docs </a>
                     <span>  Tutorial </span>
                     <span @click="click('https://www.youtube.com/watch?v=e6UR-CAYvPE')">  Sponser </span>
-                    <span> Api </span>
+                    <span href="/api"> Api </span>
                     <span @click="loginRedirect"> {{ username }} </span>
                    <slot> </slot>
                 </div>
