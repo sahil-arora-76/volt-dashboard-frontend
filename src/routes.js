@@ -46,10 +46,9 @@ router.beforeEach(async (to) => {
             })
             let response = await res.json(); 
             if (response.errors) {
-                return window.location = '/'
+                return window.location = 'http://localhost:3000/auth2';
             } else { 
-                store.state.loginInfo = response;
-                // next('/login'); 
+                store.state.loginInfo = response; 
             }
         } else { 
             return window.location = 'http://localhost:3000/auth2';
