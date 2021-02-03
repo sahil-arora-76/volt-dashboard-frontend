@@ -4,10 +4,10 @@
         <div class="desktop">  
             <router-link to="/" id="volt"> VOLT </router-link>
             <a href="https://top.gg/bot/710534645405581353">  Vote </a>
-            <span>  Commands </span>
+            <span>  Docs </span>
             <a href="https://www.youtube.com/watch?v=e6UR-CAYvPE">  Tutorial </a>
             <span>  Sponser </span>
-            <a href="https://discord.gg/EYMDZ6E">  Support </a>
+            <a href="/api">  Api </a>
             <span @click="loginRedirect"> {{ username }} </span>
         </div>
          <div class="mobile"> 
@@ -16,10 +16,11 @@
             <router-link id="volt-mob" to="/"> VOLT</router-link>
                 <div class="mobile-menu"  v-if="pressed "> 
                     <span @click="click('https://top.gg/bot/710534645405581353') ">  Vote </span>
-                    <span>  Commands </span>
+                    <span>  Docs </span>
                     <span>  Tutorial </span>
                     <span @click="click('https://www.youtube.com/watch?v=e6UR-CAYvPE')">  Sponser </span>
-                   <span @click="loginRedirect"> {{ username }} </span>
+                    <span> Api </span>
+                    <span @click="loginRedirect"> {{ username }} </span>
                    <slot> </slot>
                 </div>
             </div>

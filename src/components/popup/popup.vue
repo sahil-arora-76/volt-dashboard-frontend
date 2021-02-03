@@ -51,7 +51,9 @@ export default {
         animation-name: fadeIn;
         animation-duration: 0.4s
     }
-
+    .modal-header { 
+        border-radius: 0;
+    }
     .modal-content {
         position: absolute;
         bottom: 0;
@@ -62,6 +64,14 @@ export default {
         animation-name: slideIn;
         animation-duration: 0.4s
     }
+    .fa-times { 
+        float: right;
+        text-align: right;
+        font-size: 1.5rem;
+        justify-content: right;
+        position: relative;
+        left: 98%;
+    }   
     @media screen and (max-width: 880px) { 
         .fa-times { 
             float: right;
@@ -73,24 +83,22 @@ export default {
         }
         .modal-header { 
             height: 4vh;
+            border-radius: 0;
         }
     }
     .fa-times { 
         float: right;
         text-align: right;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         justify-content: right;
         position: relative;
         left: 98%;
     }    
     .fa-times:hover,
     .fa-times:focus {
-        color: #000;
+        color: white;
         text-decoration: none;
         cursor: pointer;
-    }
-    #loading { 
-        color: black;
     }
     .modal-header {
         padding: 2px 16px;
@@ -98,7 +106,10 @@ export default {
         color: white;
     }
 
-    .modal-body {padding: 2px 16px;}
+    .modal-body {
+    padding: 10px; 
+    color: black;
+    }
     
     .modal-footer {
         padding: 2px 16px;
