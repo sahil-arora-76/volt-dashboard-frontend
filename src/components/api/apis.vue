@@ -66,7 +66,7 @@ export default {
             api: 'loading...'
         };
     },
-    mounted() {
+    async mounted() {
         let c = document.cookie;
         if (!c) {
             return this.loggedIn = false;
@@ -81,8 +81,30 @@ export default {
         if (userIndex < 0) { 
             return this.loggedIn = false;
         }
-        this.userId = k[userIndex].split('=')[1];
-        return this.loggedIn = true;
+        let id = k[userIndex].split('=')[1];
+        let body = { 
+            query: `
+            {
+                validateUser(id: "${id}")
+            }
+            `
+        }
+        let res = await fetch('http://localhost:3000/graphql', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify(body)
+        })
+        let response = await res.json();
+        if (res.ok) { 
+            if (response.data.validateUser) { 
+                this.user = id;
+                return this.loggedIn = true;
+            } else {
+                this.loggedIn = false;
+            }
+        }
     },
     methods: {
         async generateKey() { 

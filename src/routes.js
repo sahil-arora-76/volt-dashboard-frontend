@@ -52,7 +52,7 @@ router.beforeEach(async (to) => {
                 // next('/login'); 
             }
         } else { 
-            window.location = '/';
+            return window.location = 'http://localhost:3000/auth2';
         }
     }
 })

@@ -56,7 +56,6 @@ export default {
             return 'fas fa-bars'
         }, 
         loginRedirect() { 
-
             if (!document.cookie) { 
                 return window.location = 'http://localhost:3000/auth2';
             }
