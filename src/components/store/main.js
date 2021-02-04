@@ -4,6 +4,7 @@ export const store = createStore({
         pressed: false, 
         loginInfo: {},
         popup: false,
+        docPopup: false
     }, 
     mutations: {
         press(state) { 
@@ -14,7 +15,7 @@ export const store = createStore({
         }, 
         showPopup(state, val) { 
             state.popup = val;
-        }
+        }, 
     }, 
     actions: {
         press(context) { 

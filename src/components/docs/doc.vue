@@ -25,14 +25,26 @@
     </div>
     </div>
     <div class="use"> 
-        <button> How To Use? </button>
+        <button @click="popup" id="button"> How To Use? </button>
+    </div>
+    <div class="popup">
+        <base-popup> </base-popup>
     </div>
 </template>
 <script>
 import apis from '../../api';
+import basePopup from '../popup/popup-doc'; 
 export default {
+    components: { 
+        basePopup
+    },
+    methods: {
+        popup() { 
+            this.$store.state.docPopup = !this.$store.state.docPopup;
+        }
+    },
     data() {
-        return{ 
+        return { 
             link: 'https://someLink/api', 
             apis: apis.image, 
             textapis: apis.text
@@ -79,6 +91,11 @@ export default {
     top: 40vh;
     text-align: center;
     right: 37%;
+}
+@media screen and (max-width: 700px) { 
+    #button { 
+        width: 60%;
+    }
 }
 .main { 
     display: flex;
