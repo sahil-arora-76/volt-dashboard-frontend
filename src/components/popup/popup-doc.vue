@@ -24,7 +24,7 @@
 export default {
     methods: {
         close() {
-            this.$store.state.docPopup = false;
+            return this.$store.state.docPopup = false;
         }
     }
 }
