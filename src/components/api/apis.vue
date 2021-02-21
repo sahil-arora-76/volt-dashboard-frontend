@@ -67,6 +67,7 @@ export default {
         };
     },
     async mounted() {
+        alert("Api Is Is Not Fully Developed Yet");
         let c = document.cookie;
         if (!c) {
             return this.loggedIn = false;
@@ -89,7 +90,7 @@ export default {
             }
             `
         }
-        let res = await fetch('http://localhost:3000/graphql', {
+        let res = await fetch('https://volt-back.herokuapp.com/graphql', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ export default {
                 }
                 `
             }
-            let res = await fetch('http://localhost:3000/graphql', 
+            let res = await fetch('https://volt-back.herokuapp.com/graphql', 
             {
                 method: 'POST', 
                 headers: {
@@ -140,7 +141,7 @@ export default {
                 }
                 `
             }
-            let res = await fetch('http://localhost:3000/graphql', {
+            let res = await fetch('https://volt-back.herokuapp.com/graphql', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'

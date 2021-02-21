@@ -45,11 +45,15 @@ export default {
     },
     data() {
         return { 
-            link: 'https://someLink/api', 
+            link: 'https://voltapi.notadevps.repl.co', 
             apis: apis.image, 
             textapis: apis.text
         }
     },
+    mounted()
+    {
+        alert("Api Is Not Fully Developed Yet");
+    }
 }
 </script>
 <style scoped>

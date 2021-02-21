@@ -8,7 +8,7 @@
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved  
               <br> 
-              Made By VoltOp#8135
+              Made By THOR#5021
             </p>
           </div>
 

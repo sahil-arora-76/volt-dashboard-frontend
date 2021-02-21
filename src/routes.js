@@ -39,7 +39,7 @@ router.beforeEach(async (to) => {
                     }
                 `
             }
-            let res = await fetch('http://localhost:3000/graphql', { 
+            let res = await fetch('https://volt-back.herokuapp.com/graphql', { 
                 method: 'POST',
                 headers: { 
                 'Content-Type': 'application/json', 
@@ -48,12 +48,12 @@ router.beforeEach(async (to) => {
             })
             let response = await res.json(); 
             if (response.errors) {
-                return window.location = 'http://localhost:3000/auth2';
+                return window.location = 'https://volt-back.herokuapp.com/auth2';
             } else { 
                 store.state.loginInfo = response; 
             }
         } else { 
-            return window.location = 'http://localhost:3000/auth2';
+            return window.location = 'https://volt-back.herokuapp.com/auth2';
         }
     }
 })

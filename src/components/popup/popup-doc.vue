@@ -6,14 +6,14 @@
             <h4> How To Use? </h4>
             <p>The endpoints requires a query parameter to be passed and  a api key in header of type bearer for authorization . You can get your api 
                 key by clicking api in the navigation bar. <br> 
-                base url is <strong> https://somelink.com/api/ </strong>
+                base url is <strong> https://voltapi.notadevps.repl.co </strong>
                 <br> 
                 Example: <br>
                 <strong> Text Endpoint  </strong><br>
-                https://someLink.com/api/chalk?text=sometexthere<br>
+                https://voltapi.notadevps.repl.co/chalk?text=sometexthere<br>
                 
                 <strong>  Endpoint </strong> <br>
-                https://somelink.com/api/heart?image=someimagelink<br>
+                https://voltapi.notadevps.repl.co/heart?image=someimagelink<br>
                 For More Info Click <a href="#"> HERE </a>
             </p>
         </div>
