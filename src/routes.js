@@ -26,15 +26,14 @@ router.beforeEach(async (to) => {
     if (to.fullPath.includes('/login')) { 
         if (!to.fullPath.split('?')) 
         {
-            return window.location = '/'; 
+            var getQuery = to.fullPath.split('?')[1]
+            var params = getQuery.split('&') 
+            let token = params[0].split("token")[1];
+            let user = params[1].split("userid=")[1];
+            document.cookie = `userid=${user}`; 
+            document.cookie = `token=${token}`;
+            window.location = '/login';
         }
-        var getQuery = to.fullPath.split('?')[1]
-        var params = getQuery.split('&') 
-        let token = params[0].split("token")[1];
-        let user = params[1].split("userid=")[1];
-        document.cookie = `userid=${user}`; 
-        document.cookie = `token=${token}`;
-        window.location = '/login';
         let cookie = document.cookie.split(';'); 
         let index = cookie.findIndex(x => x.includes('token')); 
         if (index >= 0 ) {
