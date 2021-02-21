@@ -1,0 +1,105 @@
+[debug] [2021-02-21T17:21:36.914Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:21:36.918Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2021-02-21T17:21:36.919Z] CLI Version:   9.4.0
+[debug] [2021-02-21T17:21:36.919Z] Platform:      linux
+[debug] [2021-02-21T17:21:36.919Z] Node Version:  v14.15.4
+[debug] [2021-02-21T17:21:36.919Z] Time:          Sun Feb 21 2021 22:51:36 GMT+0530 (India Standard Time)
+[debug] [2021-02-21T17:21:36.920Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:21:36.920Z] 
+[debug] [2021-02-21T17:21:36.929Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-21T17:21:36.930Z] > authorizing via signed-in user
+[debug] [2021-02-21T17:21:36.930Z] [iam] checking project volt-ab215 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-02-21T17:21:36.934Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-21T17:21:36.934Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:21:37.282Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 21 Feb 2021 17:21:37 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:21:37.314Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/volt-ab215:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-02-21T17:21:38.882Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 21 Feb 2021 17:21:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1363","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:21:38.884Z] > refreshing access token with scopes: []
+[debug] [2021-02-21T17:21:38.884Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:21:39.199Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Sun, 21 Feb 2021 17:21:39 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:21:39.234Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 [none]
+[debug] [2021-02-21T17:21:39.696Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 200
+[debug] [2021-02-21T17:21:39.696Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 {"projectId":"volt-ab215","projectNumber":"94118413570","displayName":"volt","name":"projects/volt-ab215","resources":{"hostingSite":"volt-ab215"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'volt-ab215'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-02-21T17:21:39.709Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-21T17:21:39.710Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:21:40.014Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sun, 21 Feb 2021 17:21:39 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:21:40.067Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/volt-ab215/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-02-21T17:23:50.377Z] Error: connect ETIMEDOUT 216.58.200.138:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.200.138:443
+[debug] [2021-02-21T17:24:04.702Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:24:04.705Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2021-02-21T17:24:04.705Z] CLI Version:   9.4.0
+[debug] [2021-02-21T17:24:04.705Z] Platform:      linux
+[debug] [2021-02-21T17:24:04.705Z] Node Version:  v14.15.4
+[debug] [2021-02-21T17:24:04.706Z] Time:          Sun Feb 21 2021 22:54:04 GMT+0530 (India Standard Time)
+[debug] [2021-02-21T17:24:04.706Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:24:04.706Z] 
+[debug] [2021-02-21T17:24:04.712Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-21T17:24:04.713Z] > authorizing via signed-in user
+[debug] [2021-02-21T17:24:04.713Z] [iam] checking project volt-ab215 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-02-21T17:24:04.716Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/volt-ab215:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-02-21T17:24:06.324Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 21 Feb 2021 17:24:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1341","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:06.328Z] > refreshing access token with scopes: []
+[debug] [2021-02-21T17:24:06.328Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:24:06.634Z] <<< HTTP RESPONSE 200 {"date":"Sun, 21 Feb 2021 17:24:06 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:06.659Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 [none]
+[debug] [2021-02-21T17:24:07.017Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 200
+[debug] [2021-02-21T17:24:07.017Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 {"projectId":"volt-ab215","projectNumber":"94118413570","displayName":"volt","name":"projects/volt-ab215","resources":{"hostingSite":"volt-ab215"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'volt-ab215'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-02-21T17:24:07.023Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-21T17:24:07.023Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:24:07.329Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 21 Feb 2021 17:24:07 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:07.358Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/volt-ab215/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-02-21T17:24:53.783Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:24:53.786Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2021-02-21T17:24:53.786Z] CLI Version:   9.4.0
+[debug] [2021-02-21T17:24:53.786Z] Platform:      linux
+[debug] [2021-02-21T17:24:53.786Z] Node Version:  v14.15.4
+[debug] [2021-02-21T17:24:53.787Z] Time:          Sun Feb 21 2021 22:54:53 GMT+0530 (India Standard Time)
+[debug] [2021-02-21T17:24:53.787Z] ----------------------------------------------------------------------
+[debug] [2021-02-21T17:24:53.787Z] 
+[debug] [2021-02-21T17:24:53.793Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-21T17:24:53.794Z] > authorizing via signed-in user
+[debug] [2021-02-21T17:24:53.794Z] [iam] checking project volt-ab215 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-02-21T17:24:53.796Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/volt-ab215:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-02-21T17:24:55.176Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 21 Feb 2021 17:24:55 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1146","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:55.180Z] > refreshing access token with scopes: []
+[debug] [2021-02-21T17:24:55.181Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:24:55.512Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 21 Feb 2021 17:24:55 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:55.549Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 [none]
+[debug] [2021-02-21T17:24:55.847Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 200
+[debug] [2021-02-21T17:24:55.847Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/volt-ab215 {"projectId":"volt-ab215","projectNumber":"94118413570","displayName":"volt","name":"projects/volt-ab215","resources":{"hostingSite":"volt-ab215"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'volt-ab215'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-02-21T17:24:55.854Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-21T17:24:55.854Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-21T17:24:56.137Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Sun, 21 Feb 2021 17:24:56 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-21T17:24:56.164Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/volt-ab215/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-02-21T17:27:07.172Z] Error: connect ETIMEDOUT 216.58.200.138:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.200.138:443

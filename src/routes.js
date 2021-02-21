@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory } from 'vue-router';
 import main from './components/page/main.vue'
 import login from './components/login/login.vue';
-// import { store } from './components/store/main';
+import { store } from './components/store/main';
 import send  from './components/embeds/send.vue';
 import vote from './components/votes/votes.vue';
 import api from './components/api/apis';
@@ -34,38 +34,40 @@ router.beforeEach(async (to) => {
         let user = params[1].split("userid=")[1];
         document.cookie = `userid=${user}`; 
         document.cookie = `token=${token}`;
-        // let cookie = document.cookie.split(';'); 
-        // let index = cookie.findIndex(x => x.includes('token')); 
-        // if (index >= 0 ) {
-        //     let index = cookie.findIndex(x => x.includes('userid')); 
-        //     if (index < 0 ) { 
-        //         return window.location = '/';
-        //     }
-        //     let userid = cookie[index]; 
-        //     let id = userid.split('=')[1];
-        //     const graphqlQuery = { 
-        //         query: `
-        //             { 
-        //                 getUser(id:"${id}") {_id id  discriminator avatar username guilds { id name owner permissions permissions_new icon  } } 
-        //             }
-        //         `
-        //     }
-        //     let res = await fetch('https://volt-back.herokuapp.com/graphql', { 
-        //         method: 'POST',
-        //         headers: { 
-        //         'Content-Type': 'application/json', 
-        //         }, 
-        //         body: JSON.stringify(graphqlQuery)
-        //     })
-        //     let response = await res.json(); 
-        //     if (response.errors) {
-        //         return window.location = 'https://volt-back.herokuapp.com/auth2';
-        //     } else { 
-        //         store.state.loginInfo = response; 
-        //     }
-        // } else { 
-        //     return window.location = 'https://volt-back.herokuapp.com/auth2';
-        // }
+        window.location = '/login';
+        let cookie = document.cookie.split(';'); 
+        let index = cookie.findIndex(x => x.includes('token')); 
+        if (index >= 0 ) {
+            let index = cookie.findIndex(x => x.includes('userid')); 
+            if (index < 0 ) { 
+                return window.location = '/';
+            }
+            let userid = cookie[index]; 
+            let id = userid.split('=')[1];
+            const graphqlQuery = { 
+                query: `
+                    { 
+                        getUser(id:"${id}") {_id id  discriminator avatar username guilds { id name owner permissions permissions_new icon  } } 
+                    }
+                `
+            }
+            let res = await fetch('https://volt-back.herokuapp.com/graphql', { 
+                method: 'POST',
+                headers: { 
+                'Content-Type': 'application/json', 
+                }, 
+                body: JSON.stringify(graphqlQuery)
+            })
+            let response = await res.json(); 
+            console.log(response);
+            if (response.errors) {
+                return window.location = 'https://volt-back.herokuapp.com/auth2';
+            } else { 
+                store.state.loginInfo = response; 
+            }
+        } else { 
+            return window.location = 'https://volt-back.herokuapp.com/auth2';
+        }
     }
 })
 export default router; 
