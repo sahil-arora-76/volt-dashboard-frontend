@@ -1,9 +1,6 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "engines": {
-    "node": "12.13.x"
-  },
   "scripts": {
     "start": "node server.js",
     "serve": "vue-cli-service serve",
@@ -14,6 +11,7 @@
     "@vue/cli": "^4.5.11",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "inspector": "^0.5.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0-rc.2"
