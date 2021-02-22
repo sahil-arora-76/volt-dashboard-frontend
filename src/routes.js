@@ -24,7 +24,7 @@ export let isAuth  = () => {
 }
 router.beforeEach(async (to) => {
     if (to.fullPath.includes('/login')) { 
-        if (!to.fullPath.split('?')) 
+        if (to.fullPath.includes('token') && to.fullPath.includes('userid')) 
         {
             var getQuery = to.fullPath.split('?')[1]
             var params = getQuery.split('&') 
