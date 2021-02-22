@@ -24,7 +24,7 @@ export let isAuth  = () => {
 }
 router.beforeEach(async (to) => {
     if (to.fullPath.includes('/login')) { 
-        if (to.fullPath.includes('token') && to.fullPath.includes('userid')) 
+        if (to.fullPath.includes('token')) 
         {
             var getQuery = to.fullPath.split('?')[1]
             var params = getQuery.split('&') 
@@ -59,12 +59,12 @@ router.beforeEach(async (to) => {
             let response = await res.json(); 
             console.log(response);
             if (response.errors) {
-                return window.location = 'https://volt-back.herokuapp.com/auth2';
+                return window.location = '/';
             } else { 
                 store.state.loginInfo = response; 
             }
         } else { 
-            return window.location = 'https://volt-back.herokuapp.com/auth2';
+            return window.location = '/';
         }
     }
 })

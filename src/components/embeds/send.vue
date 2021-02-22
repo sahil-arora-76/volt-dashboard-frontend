@@ -97,12 +97,9 @@ export default {
             }
         }, 
         async logout() { 
-            var allCookies = document.cookie.split(';');  
-            for (var i = 0; i < allCookies.length; i++)
-            {
-                document.cookie = allCookies[i] + "=;expires=" 
-                + new Date(0).toUTCString(); 
-            }
+            document.cookie = 'token' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'userid' +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            window.location = '/';
         },
         async sendEmbed() { 
             let userId = document.cookie; 
