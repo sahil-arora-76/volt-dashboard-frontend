@@ -1,5 +1,9 @@
 <template>
 <base-nav> </base-nav>
+            <div v-if="guilds.length <= 0" class="noguilds" > 
+            <p> You Should Have MANAGE_SERVERS Perms  With Volt In It </p>
+            <span> Found Guild: 0 </span>
+        </div>
     <div class="main">
         <ul  v-if="guilds.length > 0 ">
             <li v-for="guild in guilds " :key="guild.id" @click="redirect(guild.id)">
@@ -12,10 +16,6 @@
                 </div>
             </li>
         </ul>
-            <div v-if="guilds.length <= 0" class="noguilds" > 
-            <p> You Should Have MANAGE_SERVERS Perms  With Volt In It </p>
-            <span> Found Guild: 0 </span>
-        </div>
     </div>
 
 </template>

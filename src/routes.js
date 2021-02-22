@@ -57,14 +57,19 @@ router.beforeEach(async (to) => {
                 body: JSON.stringify(graphqlQuery)
             })
             let response = await res.json(); 
-            console.log(response);
             if (response.errors) {
-                return window.location = '/';
+                if(response.errors[0].message == 'Unexpected error value: []')
+                {
+                    store.state.loginInfo = response;
+                } else 
+                {
+                    return window.location = '/ptanhi';
+                }
             } else { 
                 store.state.loginInfo = response; 
             }
         } else { 
-            return window.location = '/';
+            return window.location = '/randi';
         }
     }
 })
