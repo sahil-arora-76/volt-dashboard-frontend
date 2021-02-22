@@ -32,7 +32,6 @@ router.beforeEach(async (to) => {
             let user = params[1].split("userid=")[1];
             document.cookie = `userid=${user}`; 
             document.cookie = `token=${token}`;
-            window.location = '/login';
         }
         let cookie = document.cookie.split(';'); 
         let index = cookie.findIndex(x => x.includes('token')); 

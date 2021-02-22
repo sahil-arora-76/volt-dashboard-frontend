@@ -16,7 +16,7 @@
             <router-link id="volt-mob" to="/"> VOLT</router-link>
                 <div class="mobile-menu"  v-if="pressed "> 
                     <span @click="click('/votes') ">  Vote </span>
-                    <a href="/docs">  Docs </a>
+                    <span @click="click('/docs')">  Docs </span>
                     <span @click="click('https://discord.gg/mwAXpMD')">  Sponser </span>
                     <span @click="click('https://www.youtube.com/watch?v=e6UR-CAYvPE')">  Tutorial </span>
                     <span href="/api"> Api </span>
