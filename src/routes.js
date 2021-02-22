@@ -58,18 +58,12 @@ router.beforeEach(async (to) => {
             })
             let response = await res.json(); 
             if (response.errors) {
-                if(response.errors[0].message == 'Unexpected error value: []')
-                {
-                    store.state.loginInfo = response;
-                } else 
-                {
-                    return window.location = '/ptanhi';
-                }
+                console.log(response.errors)
             } else { 
                 store.state.loginInfo = response; 
             }
         } else { 
-            return window.location = '/randi';
+            return window.location = '/';
         }
     }
 })

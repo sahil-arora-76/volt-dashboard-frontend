@@ -1,6 +1,6 @@
 <template>
 <base-nav> </base-nav>
-            <div v-if="guilds.length <= 0" class="noguilds" > 
+            <div v-if="guilds.length <= 0 || guilds == null" class="noguilds" > 
             <p> You Should Have MANAGE_SERVERS Perms  With Volt In It </p>
             <span> Found Guild: 0 </span>
         </div>
@@ -25,6 +25,13 @@ export default {
     components: {
         baseNav
     }, 
+    mounted()
+    {
+        if (this.$store.state.loginInfo.data.getUser === null)
+        {
+            this.guilds = null;
+        }
+    },
     computed: { 
         f() { 
             return this.$store.state.pressed
