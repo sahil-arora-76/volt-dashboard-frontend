@@ -4,10 +4,8 @@
         <div class="desktop">  
             <router-link to="/" id="volt"> VOLT </router-link>
             <a href="/votes">  Vote </a>
-            <a href="/docs">  Docs </a>
             <a href="https://www.youtube.com/watch?v=e6UR-CAYvPE">  Tutorial </a>
             <a href="https://discord.gg/mwAXpMD">  Sponser </a>
-            <a href="/api">  Api </a>
             <span @click="loginRedirect"> {{ username }} </span>
         </div>
          <div class="mobile"> 
@@ -16,10 +14,8 @@
             <router-link id="volt-mob" to="/"> VOLT</router-link>
                 <div class="mobile-menu"  v-if="pressed "> 
                     <span @click="click('/votes') ">  Vote </span>
-                    <span @click="click('/docs')">  Docs </span>
                     <span @click="click('https://discord.gg/mwAXpMD')">  Sponser </span>
                     <span @click="click('https://www.youtube.com/watch?v=e6UR-CAYvPE')">  Tutorial </span>
-                    <span href="/api"> Api </span>
                     <span @click="loginRedirect"> {{ username }} </span>
                    <slot> </slot>
                 </div>
@@ -57,13 +53,13 @@ export default {
         }, 
         loginRedirect() { 
             if (!document.cookie) { 
-                return window.location = 'https://volt-back.herokuapp.com/auth2';
+                return window.location = 'https://volt-back-dash.herokuapp.com/auth2';
             }
             let cookie = document.cookie.split(';');
             let index = cookie.findIndex(x => x.includes('token')); 
             let index2 = cookie.findIndex(x => x.includes('userid')); 
             if (index < 0 || index2 < 0) { 
-                return window.location = 'https://volt-back.herokuapp.com/auth2';
+                return window.location = 'https://volt-back-dash.herokuapp.com/auth2';
             } else { 
                 return window.location = '/login';
             }

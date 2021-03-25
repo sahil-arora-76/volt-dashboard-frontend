@@ -4,9 +4,11 @@ import login from './components/login/login.vue';
 import { store } from './components/store/main';
 import send  from './components/embeds/send.vue';
 import vote from './components/votes/votes.vue';
-import api from './components/api/apis';
-import docs from './components/docs/doc';
 import { document, window } from 'globalthis/implementation';
+
+
+//not to mention
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -14,8 +16,6 @@ const router = createRouter({
         { path: '/', component: main }, 
         { path: '/send/:Id', component: send, props: true }, 
         { path: '/votes', component: vote }, 
-        { path: '/api', component: api }, 
-        { path: '/docs', component: docs }
     ], 
     linkActiveClass: 'active'
 }); 
@@ -28,7 +28,7 @@ router.beforeEach(async (to) => {
         {
             var getQuery = to.fullPath.split('?')[1]
             var params = getQuery.split('&') 
-            let token = params[0].split("token")[1];
+            let token = params[0].split("token=")[1];
             let user = params[1].split("userid=")[1];
             document.cookie = `userid=${user}`; 
             document.cookie = `token=${token}`;
@@ -49,7 +49,7 @@ router.beforeEach(async (to) => {
                     }
                 `
             }
-            let res = await fetch('https://volt-back.herokuapp.com/graphql', { 
+            let res = await fetch('https://volt-back-dash.herokuapp.com/graphql', { 
                 method: 'POST',
                 headers: { 
                 'Content-Type': 'application/json', 

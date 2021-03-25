@@ -47,7 +47,7 @@ export default {
                 }            
             `
         }
-        const res = await fetch('https://volt-back.herokuapp.com/graphql', {
+        const res = await fetch('https://volt-back-dash.herokuapp.com/graphql', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ export default {
                 
                 `
             }
-            let c = await fetch('https://volt-back.herokuapp.com/graphql', {
+            let c = await fetch('https://volt-back-dash.herokuapp.com/graphql', {
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json'

@@ -18,7 +18,7 @@ export default {
         return { 
             servers: 0, 
             speed: 200,
-            target: 1980,
+            target: 2280,
             status: 'online'
         }
     }, 

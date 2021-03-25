@@ -3,8 +3,8 @@
         <h2>Build Best Discord Servers!</h2>
         <span> Fun |  Image Embeds | Meme | Canvas And Much More! </span>
         <div class="buttons">
-            <button class="btn1"><i class="fab fa-discord"></i>Add To Discord</button>
-            <button class="btn2">Support Server</button>
+            <button class="btn1" @click="click('https://discord.com/oauth2/authorize?client_id=710534645405581353&permissions=1581251063&scope=bot')"><i class="fab fa-discord"></i>Add To Discord</button>
+            <button class="btn2" @click="click('https://discord.gg/mwAXpMD')">Support Server</button>
         </div>
     </div>
 </template>
@@ -13,6 +13,12 @@ export default {
     computed:  {
         f() { 
             return this.$store.state.pressed
+        }
+    },
+    methods: {
+        click(s) 
+        {
+            window.location = s; 
         }
     },
     watch: {

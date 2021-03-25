@@ -124,27 +124,29 @@ export default {
                 
                 `
             } 
-            let res =  await fetch('https://volt-back.herokuapp.com/graphql', {
+            let res =  await fetch('https://volt-back-dash.herokuapp.com/graphql', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
             }, 
             body: JSON.stringify(body)
-            })
+            }); 
+
             let response = await res.json(); 
+            console.log(response);
             this.sending  = false;
             if (response.data.sendEmbed[0] === 'Ok') { 
                 this.loading = 'Done!'; 
                 setTimeout(() => {
                     this.$store.state.popup = false;
                     this.loading = 'Sending...';
-                }, 2000)
+                }, 2500)
             } else { 
                 this.loading = response.data.sendEmbed[0];
                 setTimeout(() => {
                     this.$store.state.popup = false;
                     this.loading = 'Sending...';
-                }, 2000)
+                }, 2500)
             }
         },
         async sendImageEmbed() { 
@@ -182,7 +184,7 @@ export default {
                 }
                 `
             }
-            let res = await fetch('https://volt-back.herokuapp.com/graphql', {
+            let res = await fetch('https://volt-back-dash.herokuapp.com/graphql', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -196,13 +198,13 @@ export default {
                 setTimeout(() => {
                     this.$store.state.popup = false;
                     this.loading = 'Sending...';
-                }, 2000)
+                }, 2500)
             } else { 
                 this.loading = response.data.imageEmbed[0];
                 setTimeout(() => {
                     this.$store.state.popup = false;
                     this.loading = 'Sending...';
-                }, 1000)
+                }, 2500)
             }
         }
     },
